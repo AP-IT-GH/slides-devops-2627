@@ -1,0 +1,6 @@
+{
+	"name": "CloudSystemen Slides",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye",
+	"postCreateCommand": "npm install",
+    "remoteUser": "node"
+}

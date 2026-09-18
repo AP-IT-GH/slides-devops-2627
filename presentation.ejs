@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>
+        <%= folderName %>
+    </title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <!-- browser rendert templates niet, maar ze blijven wel beschikbaar -->
+                <script type="text/template">
+<%- markdownContent %>
+                </script>
+            </section>
+        </div>
+        <div style="width: 25rem; height: 25rem; position:absolute; bottom: -15rem; left: -10rem; z-index:5" id="ap-triangle">
+        	<div style="background: #ad0f0a; width: 35rem; height: 25rem; position:absolute; transform: rotate(25deg); left: -7rem;" ></div>
+        	<div style="position:absolute; bottom: 15rem; color: white; padding-left: 11.5rem; font-size: 1.5rem" >
+        	<img src='./logo.svg' style="width: 15rem"/>
+        	</div>
+        	
+        </div>
+    </div>
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="./node_modules/reveal.js-mermaid-plugin/plugin/mermaid/mermaid.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid]
+        });
+        window.setTimeout(() => {
+    	const as = Array.from(document.getElementsByTagName("a"))
+    	for(const l of as){
+    		l.target = "_blank"
+    	}}, 1000)
+    </script>
+</body>
+
+</html>

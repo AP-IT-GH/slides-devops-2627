@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Slides DevOps</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body
+    style="display: flex; flex-direction: column; align-items: center; font-family: Source Sans Pro, Helvetica, sans-serif; background-color: #000;">
+    <h1 style="color: #fff; font-size: 42pt; font-weight: bold;">DevOps</h1>
+    <ul style="width: min(95%, 960px)" ;>
+        <% for (let {presentation, presentationImage, presentationName} of presentationsWithImage) { %>
+            <a style="display: block; height: 150px; text-decoration: none; font-size: 32pt; color: white;"
+                href="/<%= presentation %>">
+                <li class="topic"
+                    style="height: 100%; list-style-type: none; border-radius: 5px; border:1px solid white; margin: 10px 0; display: flex; gap: .5em; align-items: center;">
+                    <img style="display: block; background-color: white; height: 100%; object-fit: contain;"
+                        width="150px" src="/<%= presentationImage %>"></img>
+                    <%= presentationName %>
+                </li>
+            </a>
+            <% } %>
+    </ul>
+</body>
+
+</html>
