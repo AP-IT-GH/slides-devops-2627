@@ -5,7 +5,7 @@
 ### Eerste keer (NodeJS)
 Als je NodeJS op je systeem hebt, kan je dit doen:
 
-- `git clone git@github.com:AP-IT-GH/slides-theorielessen-devops.git; cd slides-theorielessen-devops; npm i; node server.js`
+- `git clone git@github.com:AP-IT-GH/slides-devops-2627.git; cd slides-devops-2627; npm i; node server.js`
 - Surf dan naar `localhost:8000` (zonder `index.html`).
 - Kies via het keuzemenu een onderwerp.
 - Je kan de "speaker notes" raadplegen door op de toets `s` te duwen.
