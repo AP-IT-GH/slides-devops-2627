@@ -1,4 +1,0 @@
-section.no-screens-slide::after {
-    content: "Laptops dicht" "\A" "GSM's weg";
-    white-space: preserve-breaks;
-}

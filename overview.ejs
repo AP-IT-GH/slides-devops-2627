@@ -8,19 +8,48 @@
     <link rel="stylesheet" href="../reveal.js/dist/reset.css">
     <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
     <link rel="stylesheet" href="./style.css">
+    <style>
+      h2 {
+          font-weight: 900;
+          text-align: left;
+          font-size: 30pt;
+          width: min(95%, 960px);
+      }
+      ul > ul, ul > li {
+          margin-left: 1em;
+      }
+    </style>
 </head>
-
 <body
     style="display: flex; flex-direction: column; align-items: center; font-family: Source Sans Pro, Helvetica, sans-serif; background-color: #000;">
     <h1 style="color: #fff; font-size: 42pt; font-weight: bold;">DevOps</h1>
+    <h2 style="color: white">Afspraken</h2>
+    <ul style="width: min(95%, 960px); color: white;" ;>
+        <li>geen eten / drinken in de les</li>
+        <ul>
+            <li>uitzondering: afgesloten flesje <strong>water</strong> (geen frisdrank, fruitsap,...)</li>
+        </ul>
+        <li>op tijd in de les</li>
+        <ul>
+            <li>de deur blijft 10 minuten open</li>
+            <li>daarna enkel binnen mits verwittiging via e-mail voor de start</li>
+        </ul>
+        <li>aanwezig om de stof te verwerken</li>
+        <ul>
+            <li>GSM's stil en buiten bereik</li>
+            <li>je werkt aan de oefeningen van dit vak</li>
+            <li>geen laptops in de theorieles (pen en papier)</li>
+        </ul>
+    </ul>
+    <h2 style="color: white">Inhoud</h2>
     <ul style="width: min(95%, 960px)" ;>
         <% for (let {presentation, presentationImage, presentationName} of presentationsWithImage) { %>
-            <a style="display: block; height: 150px; text-decoration: none; font-size: 32pt; color: white;"
+            <a style="display: block; height: 50px; text-decoration: none; font-size: 32pt; color: white;"
                 href="/<%= presentation %>">
                 <li class="topic"
                     style="height: 100%; list-style-type: none; border-radius: 5px; border:1px solid white; margin: 10px 0; display: flex; gap: .5em; align-items: center;">
                     <img style="display: block; background-color: white; height: 100%; object-fit: contain;"
-                        width="150px" src="/<%= presentationImage %>"></img>
+                        width="50px" src="/<%= presentationImage %>"></img>
                     <%= presentationName %>
                 </li>
             </a>
