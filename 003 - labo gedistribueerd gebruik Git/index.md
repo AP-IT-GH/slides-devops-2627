@@ -109,6 +109,14 @@ note:
 
 # Opdracht
 
+- denk na hoe je deze URI later zou terugzoeken
+- gebruik `git --help` voor het subcommando
+- gebruik `git <SUBCOMMANDO> --help`
+
+---
+
+# Opdracht
+
 - maak in je lokale repository een nieuwe file, `fileA.txt` en commit
 - maak er via de web interface een tweede, `fileB.txt`
 - pull de remote wijziging naar de lokale repo
