@@ -109,6 +109,15 @@ note:
 
 # Opdracht
 
+- maak in je lokale repository een nieuwe file, `fileA.txt` en commit
+- maak er via de web interface een tweede, `fileB.txt`
+- pull de remote wijziging naar de lokale repo
+- wat merk je?
+
+---
+
+# Opdracht
+
 - verzin een mogelijke bug in je project
 - maak er een "Issue" voor aan
 - maak een nieuwe commit waarin de bug "opgelost" is en push naar GitHub
