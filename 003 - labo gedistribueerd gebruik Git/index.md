@@ -131,7 +131,6 @@ note:
 - maak een nieuwe commit waarin de bug "opgelost" is en push naar GitHub
 - sluit de issue
   - verwerk een verwijzing naar de commit die hem oplost
-  - gebruik `#` voor de commit hash
   - wat merk je?
 
 ---
