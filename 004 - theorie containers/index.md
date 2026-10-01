@@ -174,3 +174,22 @@ flowchart TD
     A -->|docker rmi| D
     B -->|docker rm| D
 </pre></div>
+
+---
+
+## Voorbeeld 1
+
+note:
+
+- https://hub.docker.com/_/mysql
+- `docker pull` levert image
+- `docker run` voert hem uit (en pullt indien nodig)
+
+---
+
+## Voorbeeld 2
+
+note:
+
+- Dockerfile voor Pythonversie Hello World
+- **hoeft** niet `python` image te zijn, maar logische keuze
