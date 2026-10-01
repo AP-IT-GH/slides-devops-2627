@@ -176,7 +176,7 @@ flowchart TD
 
 ---
 
-## Voorbeeld 2
+## Voorbeeld 1
 
 note:
 
@@ -186,7 +186,7 @@ note:
 
 ---
 
-## Voorbeeld 1
+## Voorbeeld 2
 
 note:
 
