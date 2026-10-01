@@ -109,7 +109,8 @@ note:
 note:
 
 - gebaseerd op https://btholt.github.io/complete-intro-to-containers/chroot
-- demo filesysteem (tijdens de les ook **in** een Ubuntu container, want OS van de lector gebruikt niet-standaardfilesysteem dat zaken complexer maakt)
+  - start omgeving met `docker run -it --name docker-host --rm --privileged ubuntu:bionic`
+- demo filesysteem (tijdens de les ook **in** een (privileged) Ubuntu Bionic container, want OS van de lector gebruikt niet-standaardfilesysteem dat zaken complexer maakt)
   - je kan dit zelf ook runnen nadat je in de labo's Docker hebt geïnstalleerd
   - `mkdir /my-new-root`
   - `echo "my super secret thing" >> /my-new-root/secret.txt`
