@@ -1,0 +1,15 @@
+# theorie
+- rol user
+- rol Docker socket
+- rol --privileged
+- Dockerfiles schrijven (ook: welke basis neem je,...)
+- volumes vs. bind mounts
+- container lifecycle: wat betekent gestopt vs verwijderd
+- docker inspect
+- **docker logs**
+- environmentvariabelen (eerst nog even algemeen, overerving van een omgeving in een andere, dan pas in Docker)
+- container networking:
+  - check IP van een eerste container
+  - check IP van een tweede
+  - toon mogelijkheden communicatie
+  - toon mogelijkheid om ze doelgericht in netwerken te plaatsen
