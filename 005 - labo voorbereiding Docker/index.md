@@ -94,6 +94,10 @@ note:
 ## Essentiële parameters `docker run`
 
 - `-v <HOST_DIRECTORY>:<GUEST_DIRECTORY>`
+  - **opgelet met Git Bash**
+    - huidige directory aangeven met `//$PWD`
+    - bestemming moet ook starten met *dubbele* `/`
+    - bv. `//$PWD/mijnmap://bestemming`
 - `-p <HOST_PORT>:<GUEST_PORT>`
 
 ---
