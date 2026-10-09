@@ -135,19 +135,6 @@ note:
   - kan gebruikt worden om gedrag van `RUN`,... te sturen
 - de tweede wordt pas bij runnen container vastgelegd (`docker run`)
 - meestal zien we de tweede syntax
-
----
-
-## Secrets
-
-note:
-
-- omgevingsvariabelen worden soms gebruikt om containers te configureren met wachtwoorden,...
-- worden soms bijgehouden in .env files
-- risico dat deze files te veel informatie bevatten voor een gegeven container en dat credentials gaan lekken
-- **eens we met Docker Compose werken**, gaan we voorkeur geven aan "secrets" in plaats van env variables
-  - voor gewone `docker run` is hier geen apart mechanisme (maar ook geen risico op lekken credentials tussen containers)
-
 ---
 
 ## Details container achterhalen
