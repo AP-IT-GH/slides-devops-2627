@@ -36,6 +36,17 @@ tar cvf /bu/bu.tar /db
 
 ---
 
+```sql
+create table Users (
+number varchar(7) primary key,
+email varchar(100)
+);
+insert into Users (number,email) values
+('1234567','voornaam.familienaam@ap.be');
+```
+
+---
+
 ## Opdracht
 
 - Start twee `debian` containers op.
