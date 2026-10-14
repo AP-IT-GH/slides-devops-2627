@@ -17,7 +17,7 @@ const numberingRegex = /\d+ *- */;
 
 app.get('/', (_req, res, next) => {
     presentationsWithImage = getDirectories(__dirname)
-        .filter((s) => !s.startsWith(".") && !["node_modules", "voorbeeldslides"].includes(s))
+        .filter((s) => !s.startsWith(".") && !["node_modules", "voorbeeldslides", "bijlagen"].includes(s))
         .map((s) => {
             let imageLocation = "fallback-onderwerp.png";
             let specificImageLocation = path.join(__dirname, s, "onderwerp.png")
