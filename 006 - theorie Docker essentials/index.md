@@ -4,6 +4,7 @@ note:
 
 - zie recentste commit slides: Git Bash interpreteert paden anders dan normale Bash, wat kan leiden tot problemen met de `-v`
 - fix staat in nieuwere slides
+- je kan ook `export MSYS_NO_PATHCONV=1` runnen om de setting voor het herschrijven tijdelijk uit te schakelen
 
 ---
 
