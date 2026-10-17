@@ -1,0 +1,12 @@
+services:
+  node:
+    image: 'node:24'
+    user: '${APP_USER:-node}'
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - '${APP_PORT:-8000}:8000'
+    command: sh -c "npm install && npm start"
