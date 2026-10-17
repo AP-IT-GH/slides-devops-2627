@@ -13,6 +13,27 @@ Als je NodeJS op je systeem hebt, kan je dit doen:
 ### Eerste keer (Dev container)
 Open de root folder met Visual Studio Code. Als je de dev container extensie hebt, krijg je vanzelf de optie om een dev container te starten. In die container run je `node server.js`. Voor de rest zijn de stappen dezelfde als wanneer je de slides lokaal uitvoert.
 
+### Eerste keer (Docker)
+Als je Docker geïnstalleerd hebt, kan je dit doen:
+
+- Clone de repo: `git clone git@github.com:AP-IT-GH/slides-devops-2627.git`
+- Zorg dat je in de juiste folder zit: `cd slides-devops-2627`
+- Start de container: `docker compose up -d`
+
+Daarna kan je:
+
+- Surfen naar `localhost:8000`
+- Kies via het keuzemenu een onderwerp.
+- Je kan de "speaker notes" raadplegen door op de toets `s` te duwen.
+
+Extra info:
+
+- Stop de container met `docker compose down`
+  - Zorg hiervoor wel dat je in de juiste folder zit
+- Gebruik een andere poort door de env var `APP_PORT` in te stellen
+  - Voorbeeld: `APP_PORT=3000 docker compose up -d`
+  - Of via een `.env` bestand, zie [`.env.example`](.env.example)
+
 ### PDF maken
 Indien je een printable versie van de slides wil, zet je `?print-pdf` achter de URL voor het labo. Bijvoorbeeld `localhost:8000/001 - Inleiding?print-pdf`. Dan gewoon via het printvenster van je browser printen. Met de meeste browsers is dit CTRL-P. Pas de settings aan om de gewenste weergave te verkrijgen (bv. wel/geen styling, zorgen dat slides mooi op één pagina passen,...).
 
