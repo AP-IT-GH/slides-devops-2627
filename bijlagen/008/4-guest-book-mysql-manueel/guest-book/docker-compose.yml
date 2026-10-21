@@ -1,0 +1,14 @@
+services:
+  applicatie:
+    build: .
+    ports:
+      - "3000:3000"
+    command: "bash -c 'sleep 20 && node app.js'"
+  databank:
+    image: mysql:9.7.1
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    volumes:
+      - datavolume:/var/lib/mysql
+volumes:
+  datavolume: ~

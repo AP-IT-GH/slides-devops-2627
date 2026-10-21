@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - todo-api-service
+  todo-api-service:
+    build: backend
