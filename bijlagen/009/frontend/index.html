@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="myDIV" class="header">
+        <h2>Mijn Todo lijst</h2>
+        <input type="text" id="myInput" placeholder="Titel...">
+        <span onclick="newTodo()" class="addBtn">Voeg toe</span>
+    </div>
+
+    <ul id="myUL">
+        
+    </ul>
+
+
+    <script>
+        const myUL = document.getElementById("myUL")
+        function refreshList() {
+            $.ajax({
+                url: '/api/todos',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    populateList(data);
+                }
+            })
+        }
+        function populateList(data) {
+            myUL.innerHTML = '';
+            for (let d of data) {
+                addNewRow(d.id, d.title, d.status)
+            }
+            wireCloseHandlers();
+            wireDoneHandlers();
+        }
+        function wireDoneHandlers() {
+            var list = document.querySelector('ul');
+            list.addEventListener('click', function (ev) {
+                if (ev.target.tagName === 'LI') {
+                    $.ajax({
+                        url: '/api/todos/' + ev.target.id,
+                        type: 'PUT',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: JSON.stringify({status: ev.target.classList.contains('checked') ? 'TODO': 'DONE'}),
+                        success: function () {
+                            refreshList();
+                        }
+                    });
+                }
+            }, false);
+        }
+
+        // Create a new list item when clicking on the "Add" button
+        function newTodo() {
+
+            var inputValue = document.getElementById("myInput").value;
+
+            if (inputValue === '') {
+                alert("Je moet iets invullen!");
+                return;
+            }
+            $.ajax({
+                url: '/api/todos',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({title: inputValue}),
+                success: function () {
+                    refreshList();
+                }
+            })
+            document.getElementById("myInput").value = "";    
+        }
+
+        function addNewRow(id, title, status) {
+            var li = document.createElement("li");
+            if (status !== 'TODO') {
+                li.className = 'checked';
+            }
+            li.id = id;
+            var t = document.createTextNode(title);
+            li.appendChild(t);
+            myUL.appendChild(li);
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+        }
+        function wireCloseHandlers() {
+            var close = document.getElementsByClassName("close");
+            for (var i = 0; i < close.length; i++) {
+                const closeElement = close[i];
+                closeElement.onclick = function () {
+                    $.ajax({
+                        url: '/api/todos/' + closeElement.parentElement.id,
+                        type: 'DELETE',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function () {
+                            refreshList();
+                        }
+                    })
+                }
+            }
+        }
+
+        refreshList();
+    </script>
+</body>
+
+</html>
