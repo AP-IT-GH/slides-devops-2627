@@ -164,6 +164,8 @@ note:
   - er is een technisch verschil:
     - applicatie die bv. enkel connecties vanaf localhost aanvaardt, zal met systeem van Docker inkomende connecties weigeren
     - port forwarding van devcontainers zorgen dat inkomende connectie echt van localhost lijkt te komen
+- `postStartCommand` of `postCreateCommand` om NPM packages te installeren
+  - tegenover `RUN npm i`, niet identiek maar liggen dicht bij elkaar
 
 ---
 
