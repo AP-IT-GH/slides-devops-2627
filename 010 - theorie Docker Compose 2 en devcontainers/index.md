@@ -140,9 +140,15 @@ note:
   - soms meerdere manieren om hetzelfde te doen
 - voordeel: heel gebruiksvriendelijk, met onmiddellijke configuratie van de editor (plugins,...)
 - demo met file in bijlage
+  - zal pak langer duren eerste keer, zelfde werking met caching,...
+  - merk op: normale user ingesteld (developen doen we normaal niet als root...)
+  - merk op: projectstructuur gemount onder `/workspaces/NAAMVANPROJECT`
+  - merk op: tools ter beschikking die niet noodzakelijk op de hostmachine staan (bv. `tsc` voor voorbeeld in bijlage)
+  - merk op: aangepaste CLI prompt, Git geïnstalleerd in de container
 - referentie: https://code.visualstudio.com/docs/devcontainers/create-dev-container
 - tweede goede referentie: containers.dev
-- kan je zelf ook bouwen, is gewoon een Docker image met wat voorgeconfigureerde settings
+- kan je zelf ook bouwen, is gewoon een Docker image met wat voorgeconfigureerde settings (zoals die user,...)
+  - zie bv. https://github.com/devcontainers/images/tree/main
 
 ---
 
@@ -152,10 +158,12 @@ note:
 
 - `"build": { "dockerfile": "Dockerfile" }` betekent dat we Dockerfile kunnen aanpassen om extra software,... te installeren
 - `features` zal typisch ook dingen installeren en configureren...
+  - vermijdt dat je steeds zelfde stappen in Dockerfile moet zetten
 - `forwardPorts` (in JSON) vs. `ports` (in docker-compose.yml)
   - forwarding via VSC server versus via host
-    - eerste is vooral indien nodig voor development, tweede indien nodig voor deployment
-    - eerste is ook nodig als VSC en Docker op andere machine staan (wat kan, bv. in cloud deployments van VSC)
+  - er is een technisch verschil:
+    - applicatie die bv. enkel connecties vanaf localhost aanvaardt, zal met systeem van Docker inkomende connecties weigeren
+    - port forwarding van devcontainers zorgen dat inkomende connectie echt van localhost lijkt te komen
 
 ---
 
