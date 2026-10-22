@@ -101,7 +101,7 @@ note:
 
 ## Multi-stage build
 
-```
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM golang:1.26 AS build
 WORKDIR /src
