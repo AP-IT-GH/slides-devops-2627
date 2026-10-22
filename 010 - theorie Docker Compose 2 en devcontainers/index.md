@@ -46,7 +46,7 @@ note:
 ```
 services:
   myapp:
-    image: myapp:latest
+    image: httpd
     secrets:
       - my_secret
 secrets:
@@ -99,11 +99,42 @@ note:
 
 ---
 
+## Multi-stage build
+
+```
+# syntax=docker/dockerfile:1
+FROM golang:1.26 AS build
+WORKDIR /src
+COPY <<EOF /src/main.go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("hello, world")
+}
+EOF
+RUN go build -o /bin/hello ./main.go
+
+FROM scratch
+COPY --from=build /bin/hello /bin/hello
+CMD ["/bin/hello"]
+```
+
+note:
+
+- voorbeeldje gelift uit Docker documentatie
+- tools om een applicatie te bouwen (dev container) ‡ tools om applicatie te runnen (gewone container), maar er is overlap
+  - in de eerste situatie vaak veel meer nodig: build tool, testing framework,... (je kent vast `npm i --dev`)
+- kan op deze manier eerste stage gebruiken om bv. executable te produceren en dan enkel de executable en runtime dependencies kopiëren naar tweede image
+
+---
+
 ## Aanpak 2
 
 note:
 
-- VSC remote development containers extensie (andere editors hebben gelijkaardige oplossingen)
+- VSC remote development containers extensie (sommige andere editors delen dit systeem wel, bv. IntelliJ)
 - nadeel: vereist server op container (eet wel wat resources)
 - nadeel: extra laag complexiteit (configuratie in JSON bovenop bestaande Dockerfile en Docker Compose file, al dan niet zichtbaar)
   - soms meerdere manieren om hetzelfde te doen
