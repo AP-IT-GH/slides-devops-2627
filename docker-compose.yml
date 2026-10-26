@@ -1,6 +1,7 @@
 services:
   node:
     image: 'node:24'
+    restart: unless-stopped
     user: '${APP_USER:-node}'
     working_dir: /home/node/app
     environment:
