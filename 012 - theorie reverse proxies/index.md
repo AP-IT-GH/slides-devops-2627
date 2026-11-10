@@ -299,3 +299,20 @@ http:
 </ul>
 </aside>
 
+---
+
+## Projectopdracht
+
+- self-hosten
+- bereikbaar vanaf publieke internet, via HTTPS (mag via VPS of Tailscale/Headscale)
+- reverse proxy die naar minstens 5 publieke diensten leidt via subdomein / pad
+  - een van deze diensten is een statische pagina met toelichting van je setup
+- backupstrategie voor je data
+- authenticatie
+- minstens 1 eigen applicatie
+- minstens 1 applicatie die een database gebruikt (de database zelf is geen publieke dienst)
+- goede hygiëne
+- overtuigend: niet zomaar "meer services", maar services die je zelf gebruikt
+- maximale automatisering deployment
+- opvolging in versiebeheer
+- in staat vragen over aanpassingen te beantwoorden
