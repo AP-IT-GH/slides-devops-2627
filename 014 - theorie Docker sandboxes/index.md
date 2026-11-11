@@ -9,16 +9,33 @@ note:
 
 ## Context
 
-```
+<div style="display: flex; justify-content: space-between;">
+<div class="mermaid">
+<pre>
 flowchart LR
     subgraph C["Container"]
         direction TB
         CP["Processen in de container"]
-        CK["Gedeelde Host Kernel]
+        CK["Gedeelde Host Kernel"]
         CH["Host Hardware"]
         CP <-->|System Calls| CK
         CK --- CH
     end
+
+    classDef workload fill:#dbeafe,stroke:#60a5fa,color:#1e3a8a
+    classDef risk fill:#fff0d5,stroke:#d97706,color:#78350f
+    classDef isolation fill:#d1fae5,stroke:#059669,color:#064e3b
+    classDef hardware fill:#f3f4f6,stroke:#9ca3af,color:#374151
+
+    class CP,VP,GK workload
+    class CK risk
+    class HV isolation
+    class CH,VH hardware
+</pre>
+</div>
+<div class="mermaid">
+<pre>
+flowchart LR
 
     subgraph V["VM"]
         direction TB
@@ -41,7 +58,10 @@ flowchart LR
     class CK risk
     class HV isolation
     class CH,VH hardware
-```
+</pre>
+</div>
+
+</div>
 
 note:
 
