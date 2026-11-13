@@ -1,0 +1,32 @@
+# Vul elke ___ aan. Valideer met: sbx kit validate ./acme-kit --offline
+schemaVersion: "2"
+# een kit die iets toevoegt aan een bestaande agent (dus geen volledige agent)
+kind: ___
+name: acme-kit
+
+requires:
+  # de agent die we in dit labo gebruiken
+  agent: ___
+
+environment:
+  variables:
+    # zorg dat ACME_ENV de waarde "sandbox" krijgt
+    ___: "___"
+
+permissions:
+  network:
+    allow:
+      # nodig voor de installatie hieronder
+      - archive.ubuntu.com
+      - security.ubuntu.com
+      - ports.ubuntu.com
+      # ACME wil dat de agent de website van AP kan raadplegen
+      - ___
+
+setup:
+  install:
+    # installeer het programma "tree" (niet aanwezig in de standaardomgeving)
+    - command: "apt-get update && ___"
+      # apt-get vereist root: welke gebruiker (uid) is dat?
+      user: "___"
+      description: Installeer tree
