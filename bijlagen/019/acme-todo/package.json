@@ -1,0 +1,11 @@
+{
+  "name": "acme-todo",
+  "version": "1.0.0",
+  "description": "Todo-API van ACME",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "license": "ISC"
+}
