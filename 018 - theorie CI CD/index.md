@@ -82,14 +82,14 @@ note:
 
 note:
 
-- DORA-metrieken om de prestaties van een team te meten
+- metrieken om de prestaties van een team te meten
   - deployment frequency
   - lead time for changes
   - change failure rate
   - time to restore service
 - kleine batches zijn makkelijker te reviewen, te testen en terug te draaien
 - reproduceerbaar: de build gebeurt in een propere omgeving, niet op een laptop met toevallige tools
-  - doet denken aan containers
+  - doet denken aan containers, maar daar zit reproduceerbaarheid eerder in wat we deployen, niet in hoe we bouwen
 
 ---
 
@@ -110,6 +110,10 @@ note:
 ---
 
 # GitHub Actions
+
+---
+
+![voorbeeld van een duidelijke workflow](./images/example-workflow.webp)
 
 ---
 
@@ -136,6 +140,86 @@ note:
 - **action**: herbruikbaar onderdeel, vaak uit een andere repository
 - **runner**: de machine die een job uitvoert
 - YAML: zie les 008
+
+---
+
+```yaml
+name: Staging - Build, Push and Deploy
+
+on:
+  push:
+    branches:
+      - staging
+
+env:
+  REGISTRY: ghcr.io
+  PROJECT_KEY: github-action-example
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image_tag: ${{ steps.get_sha.outputs.short_sha }}
+      repo_owner: ${{ steps.lowercase.outputs.owner }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get commit SHA
+        id: get_sha
+        run: |
+          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "full_sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Lowercase repository owner
+        id: lowercase
+        run: echo "owner=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ steps.lowercase.outputs.owner }}/${{ env.PROJECT_KEY}}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=,format=short
+            type=raw,value=staging-latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            COMMIT_SHA=${{ steps.get_sha.outputs.short_sha }}
+        env:
+          DOCKER_BUILDKIT: 1
+```
+
+note:
+
+- niet nodig te gokken, actions zijn terug te vinden op Github en zijn gedocumenteerd
+- veel standaardrecepten
+- sommige stappen zijn "actions" (`uses`), sommige zijn gewoon terminalcommando's (`run`)
 
 ---
 
